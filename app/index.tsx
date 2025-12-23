@@ -2,11 +2,9 @@ import { mainStyles } from '@/styles/mainStyles';
 import { Link } from 'expo-router';
 import { Image, Pressable, Text, View } from 'react-native';
 
-type props = {};
-
 const image = require('../assets/images/logo_we.jpg');
 
-export default function Index({}: props) {
+export default function Index() {
 	return (
 		<View style={{ ...mainStyles.background, ...mainStyles.main }}>
 			<Image source={image} style={{ width: 100, height: 100 }} />
@@ -23,7 +21,11 @@ export default function Index({}: props) {
 			</Text>
 			<Text>Aprende React Native y Expo Router paso a paso</Text>
 			<Link style={mainStyles.mainButton} href="/calculator">
-				<Pressable>
+				<Pressable
+					style={({ pressed }) => ({
+						opacity: pressed ? 0.2 : 1,
+					})}
+				>
 					<Text style={mainStyles.mainText}>Calculator</Text>
 				</Pressable>
 			</Link>
